@@ -1,0 +1,215 @@
+import { useNavigate, useParams } from "react-router-dom";
+import { useState } from "react";
+
+export default function CompanyDetail() {
+    const navigate = useNavigate();
+    const { name } = useParams();
+    const [activeTab, setActiveTab] = useState("aptitude");
+    const [expanded, setExpanded] = useState(-1);
+
+    const aptitudeTopics = [
+        {
+            name: "Quantitative Aptitude",
+            progress: 4,
+            total: 10,
+            subtopics: [
+                "Number System",
+                "HCF & LCM",
+                "Permutation & Combination",
+                "Probability",
+                "Time & Work",
+                "Pipes & Cisterns",
+                "Ration & Proportions",
+            ],
+        },
+        { name: "Logical Reasoning", progress: 0, total: 10, subtopics: [] },
+        { name: "Verbal Ability", progress: 0, total: 10, subtopics: [] },
+        { name: "Logical Reasoning", progress: 0, total: 10, subtopics: [] },
+        { name: "Verbal Ability", progress: 0, total: 10, subtopics: [] },
+    ];
+
+    const technicalTopics = [
+        {
+            name: "Programming Basics",
+            progress: 4,
+            total: 10,
+            subtopics: [],
+        },
+        { name: "C++", progress: 0, total: 10, subtopics: [] },
+        { name: "Master DSA Patterns", progress: 0, total: 10, subtopics: [] },
+        { name: "Practice", progress: 0, total: 10, subtopics: [] },
+        { name: "Mock Tests", progress: 0, total: 10, subtopics: [] },
+    ];
+
+    const topics = activeTab === "aptitude" ? aptitudeTopics : technicalTopics;
+
+    return (
+        <div className="min-h-screen bg-white">
+
+            <header className="w-full border-b bg-white">
+                <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
+                    <button
+                        className="flex items-center gap-1 text-gray-700 hover:text-[#FF3B5C] font-medium"
+                        onClick={() => navigate(-1)}
+                    >
+                        <span className="text-xl">&lt;</span> Back
+                    </button>
+                    <div className="flex items-center gap-5">
+                        <div className="flex items-center gap-2">
+                            <img
+                                src="https://ui-avatars.com/api/?name=Muskan+Verma"
+                                alt="User"
+                                className="h-8 w-8 rounded-full"
+                            />
+                            <span className="font-bold text-black text-base">
+                                Muskan Verma
+                            </span>
+                        </div>
+                        <button className="flex items-center gap-2 bg-[#ff294f] hover:bg-[#e11d48] text-white px-5 py-2 rounded-[6px] text-[15px] font-normal shadow-none transition">
+                            Logout
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                width={22}
+                                height={18}
+                                fill="none"
+                                viewBox="0 0 22 22"
+                                stroke="currentColor"
+                                strokeWidth={1.5}
+                                className=""
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H9m4-5V5a2 2 0 00-2-2H5a2 2 0 00-2 2v14a2 2 0 002 2h6a2 2 0 002-2v-2"
+                                />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </header>
+
+
+            <main className="max-w-3xl mx-auto py-10 px-4">
+                <div className="flex flex-col items-center mb-6">
+                    <div className="flex items-center gap-2 mb-5">
+                        <img
+                            src="/loremIpsum.jpg"
+                            alt="Company Logo"
+                            className="h-11"
+                        />
+                        <h1 className="text-2xl font-bold text-[#404040]">
+                            COMPANY NAME
+                        </h1>
+                    </div>
+                    <p className="text-center text-lg text-gray-600 mb-8">
+                        Welcome To Your Aptitude & Technical Practice Hub!<br />
+                        Sharpen Your Skills With Topic-Wise Quizzes Designed To Boost Your Preparation.
+                    </p>
+                </div>
+
+
+                <div className="flex mb-6">
+                    <div className="flex border border-[#ff294f] rounded-full overflow-hidden">
+                        <button
+                            className={`px-10 py-2 font-semibold focus:outline-none rounded-full transition ${activeTab === "aptitude"
+                                ? "bg-[#ff294f] text-white"
+                                : "bg-white text-[#ff294f]"
+                                }`}
+                            onClick={() => {
+                                setActiveTab("aptitude");
+                                setExpanded(-1);
+                            }}
+                        >
+                            Aptitude
+                        </button>
+                        <button
+                            className={`px-10 py-2 font-semibold focus:outline-none rounded-full transition ${activeTab === "technical"
+                                ? "bg-[#ff294f] text-white"
+                                : "bg-white text-[#ff294f]"
+                                }`}
+                            onClick={() => {
+                                setActiveTab("technical");
+                                setExpanded(-1);
+                            }}
+                        >
+                            Technical
+                        </button>
+                    </div>
+                </div>
+
+
+                <div className="bg-white border border-[#dfcece] rounded-xl overflow-hidden">
+                    <div className="divide-y divide-[#e0e0e0]">
+                        {topics.map((item, idx) => (
+                            <div key={idx}>
+                                {/* Main topic row */}
+                                <div
+                                    className="flex items-center px-3 py-3 cursor-pointer"
+                                    onClick={() => setExpanded(expanded === idx ? -1 : idx)}
+                                >
+                                    <span className="w-1/2 flex items-center text-xl font-semibold text-[#212121]">
+                                        <svg
+                                            className="mr-2"
+                                            width="20"
+                                            height="23"
+                                            fill="none"
+                                            stroke="#757575"
+                                            strokeWidth="2"
+                                            viewBox="0 0 24 24"
+                                        >
+                                            {expanded === idx && item.subtopics.length > 0 ? (
+                                                <path d="M6 9l6 6 6-6" />
+                                            ) : (
+                                                <path d="M9 6l6 6-6 6" />
+                                            )}
+                                        </svg>
+                                        {item.name}
+                                    </span>
+                                    <div className="w-1/2 flex items-center">
+                                        <div className="flex-1 h-2 bg-gray-100 rounded-full mr-4">
+                                            <div
+                                                className="h-2 bg-[#ff294f] rounded-full"
+                                                style={{
+                                                    width: `${(item.progress / item.total) * 100}%`,
+                                                    transition: "width 0.3s",
+                                                }}
+                                            />
+                                        </div>
+                                        <span className="text-gray-700 text-base font-medium w-8 text-right">
+                                            {item.progress}/{item.total}
+                                        </span>
+                                    </div>
+                                </div>
+                                {/* Subtopics(for aptitude) */}
+                                {expanded === idx &&
+                                    item.subtopics &&
+                                    item.subtopics.length > 0 && (
+                                        <div className="bg-white">
+                                            {item.subtopics.map((sub, subIdx) => (
+                                                <div
+                                                    key={subIdx}
+                                                    className="flex items-center px-4 py-1.5 border-t border-[#e0e0e0]"
+                                                >
+                                                    <input
+                                                        type="checkbox"
+                                                        className="mr-3 w-4 h-4 rounded border border-gray-300 accent-[#e0e0e0]"
+                                                        disabled
+                                                    />
+                                                    <span className="flex-1 text-[#2196f3] font-medium text-base cursor-pointer">
+                                                        {sub}
+                                                    </span>
+                                                    <button className="bg-[#ff294f] text-white px-6 py-0.5 rounded-full font-medium text-base">
+                                                        Start
+                                                    </button>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </main>
+        </div>
+    );
+}
