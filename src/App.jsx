@@ -46,12 +46,12 @@ function App() {
 
   return (
     <div className="min-h-screen bg-white">
-      {/* Header */}
+      
       <header className="w-full border-b bg-white">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between py-3 px-4 sm:px-6 relative">
           <div className="flex items-left justify-between w-full sm:w-auto sm:justify-start gap-4 sm:gap-6">
-            {/* Hamburger */}
-            <div className="flex items-center gap-2">
+            
+            <div className="flex items-center gap-0.5">
               <button
                 className="sm:hidden mr-4"
                 aria-label="Open navigation"
@@ -61,24 +61,24 @@ function App() {
               </button>
 
               <img
-                src="/aghLogo.png"
+                src="/logo.jpg"
                 alt="Logo"
-                className="h-10 w-10 rounded-md bg-[#FF3B5C] p-1"
+                className="h-12 w-40 rounded-md mt-1 p-1"
               />
 
-              <div className="leading-none">
+              {/* <div className="leading-none">
                 <div className="text-sm font-semibold tracking-wide text-black">
                   APTITUDE GURU
                 </div>
                 <div className="text-md font-extrabold tracking-tight text-black">
                   HEMCHANDAR
                 </div>
-              </div>
+              </div> */}
             </div>
 
           </div>
 
-          {/* Navigation */}
+         
           <nav
             className={`
               ${navOpen ? 'flex' : 'hidden'}
@@ -106,7 +106,7 @@ function App() {
               </li>
             </ul>
           </nav>
-          {/* User Info and Logout */}
+        
           <div className="hidden sm:flex items-center gap-5">
             <div className="flex items-center gap-2">
               <img
@@ -126,7 +126,7 @@ function App() {
         </div>
       </header>
 
-      {/* Main Content */}
+     
       <main className="max-w-5xl mx-auto py-6 px-2 sm:px-4">
         <h1 className="text-3xl sm:text-5xl font-bold text-[#404040] text-center mb-3 sm:mb-5">
           COMPANY SPECIFIC
@@ -142,7 +142,7 @@ function App() {
               key={idx}
               className="bg-white rounded-xl shadow p-4 sm:p-6 flex flex-col items-center"
             >
-              {/* Logo Card */}
+             
               <div className="bg-white border border-gray-200 rounded-lg flex items-center justify-center mb-4" style={{ width: 150, height: 109 }}>
                 <img
                   src={company.img}
@@ -150,11 +150,11 @@ function App() {
                   className="object-contain max-h-[110px] max-w-[140px]"
                 />
               </div>
-              {/* Company Name */}
+             
               <div className="font-semibold text-xl sm:text-2xl mb-4 sm:mb-6 text-center text-[#404040]">
                 {company.name}
               </div>
-              {/* Button */}
+              
               {company.button.locked ? (
                 <button
                   className="w-full flex items-center justify-center gap-1 bg-gray-800 text-white py-2 rounded-lg text-base sm:text-lg font-normal"

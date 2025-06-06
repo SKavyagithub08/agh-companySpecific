@@ -44,9 +44,50 @@ export default function CompanyDetail() {
     const topics = activeTab === "aptitude" ? aptitudeTopics : technicalTopics;
 
     return (
-        <div className="min-h-screen bg-white">
+        <div className="min-h-screen bg-white flex flex-col">
+            
+            <header className="w-full border-b bg-white block md:hidden">
+                <div className="flex items-center justify-between px-4 py-3">
+                    <div className="flex items-center gap-0.5">
+                        <button
+                            className="mr-4"
+                            aria-label="Open navigation"
+                        >
+                            <svg
+                                width="32"
+                                height="32"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    d="M4 6h16M4 12h16M4 18h16"
+                                />
+                            </svg>
+                        </button>
+                        <img
+                            src="/logo.jpg"
+                            alt="Logo"
+                            className="h-12 w-40 rounded-md mt-1 p-1"
+                        />
+                        {/* <div className="leading-none">
+                            <div className="text-sm font-semibold tracking-wide text-black">
+                                APTITUDE GURU
+                            </div>
+                            <div className="text-md font-extrabold tracking-tight text-black">
+                                HEMCHANDAR
+                            </div>
+                        </div> */}
+                    </div>
+                    <div className="w-8" />
+                </div>
+            </header>
 
-            <header className="w-full border-b bg-white">
+           
+            <header className="w-full border-b bg-white hidden md:block">
                 <div className="max-w-7xl mx-auto flex items-center justify-between py-3 px-6">
                     <button
                         className="flex items-center gap-1 text-gray-700 hover:text-[#FF3B5C] font-medium"
@@ -88,30 +129,29 @@ export default function CompanyDetail() {
                 </div>
             </header>
 
-
-            <main className="max-w-3xl mx-auto py-10 px-4">
+            <main className="flex-1 w-full max-w-md md:max-w-3xl lg:max-w-4xl mx-auto py-6 px-2 sm:px-4">
                 <div className="flex flex-col items-center mb-6">
+                    
                     <div className="flex items-center gap-2 mb-5">
                         <img
                             src="/loremIpsum.jpg"
                             alt="Company Logo"
-                            className="h-11"
+                            className="h-16 w-16 object-contain"
                         />
-                        <h1 className="text-2xl font-bold text-[#404040]">
+                        <h1 className="text-2xl font-bold text-[#404040] tracking-tight text-center whitespace-nowrap">
                             COMPANY NAME
                         </h1>
                     </div>
-                    <p className="text-center text-lg text-gray-600 mb-8">
+                    <p className="text-center text-base text-gray-600 mb-6 leading-snug">
                         Welcome To Your Aptitude & Technical Practice Hub!<br />
                         Sharpen Your Skills With Topic-Wise Quizzes Designed To Boost Your Preparation.
                     </p>
                 </div>
 
-
-                <div className="flex mb-6">
-                    <div className="flex border border-[#ff294f] rounded-full overflow-hidden">
+                <div className="flex justify-center md:justify-start mb-7">
+                    <div className="flex border border-[#ff294f] rounded-full overflow-hidden w-full max-w-xs">
                         <button
-                            className={`px-10 py-2 font-semibold focus:outline-none rounded-full transition ${activeTab === "aptitude"
+                            className={`flex-1 px-0 py-2 font-semibold focus:outline-none rounded-full transition text-base ${activeTab === "aptitude"
                                 ? "bg-[#ff294f] text-white"
                                 : "bg-white text-[#ff294f]"
                                 }`}
@@ -123,7 +163,7 @@ export default function CompanyDetail() {
                             Aptitude
                         </button>
                         <button
-                            className={`px-10 py-2 font-semibold focus:outline-none rounded-full transition ${activeTab === "technical"
+                            className={`flex-1 px-0 py-2 font-semibold focus:outline-none rounded-full transition text-base ${activeTab === "technical"
                                 ? "bg-[#ff294f] text-white"
                                 : "bg-white text-[#ff294f]"
                                 }`}
@@ -137,21 +177,21 @@ export default function CompanyDetail() {
                     </div>
                 </div>
 
-
-                <div className="bg-white border border-[#dfcece] rounded-xl overflow-hidden">
-                    <div className="divide-y divide-[#e0e0e0]">
+                <div className="bg-white border border-[#e0bcbc] rounded-xl overflow-hidden w-full max-w-xs md:max-w-full mx-auto">
+                    <div className="divide-y divide-[#e0bcbc]">
                         {topics.map((item, idx) => (
                             <div key={idx}>
-                                {/* Main topic row */}
+                               
                                 <div
-                                    className="flex items-center px-3 py-3 cursor-pointer"
+                                    className="flex items-center px-4 py-4 cursor-pointer"
                                     onClick={() => setExpanded(expanded === idx ? -1 : idx)}
+                                    style={{ minHeight: 56 }}
                                 >
-                                    <span className="w-1/2 flex items-center text-xl font-semibold text-[#212121]">
+                                    <span className="w-1/12 flex items-center justify-center">
                                         <svg
                                             className="mr-2"
-                                            width="20"
-                                            height="23"
+                                            width="22"
+                                            height="22"
                                             fill="none"
                                             stroke="#757575"
                                             strokeWidth="2"
@@ -163,32 +203,49 @@ export default function CompanyDetail() {
                                                 <path d="M9 6l6 6-6 6" />
                                             )}
                                         </svg>
+                                    </span>
+                                    <span className="flex-1 text-lg font-bold text-[#212121]">
                                         {item.name}
                                     </span>
-                                    <div className="w-1/2 flex items-center">
-                                        <div className="flex-1 h-2 bg-gray-100 rounded-full mr-4">
+                                    
+                                    <span className="hidden md:flex items-center gap-2 w-1/3">
+                                        <div className="flex-1 h-2 rounded-full bg-[#f3f3f3] overflow-hidden">
                                             <div
-                                                className="h-2 bg-[#ff294f] rounded-full"
+                                                className="h-2 rounded-full bg-[#ff294f] transition-all"
                                                 style={{
                                                     width: `${(item.progress / item.total) * 100}%`,
-                                                    transition: "width 0.3s",
                                                 }}
                                             />
                                         </div>
-                                        <span className="text-gray-700 text-base font-medium w-8 text-right">
+                                        <span className="text-[#404040] text-base font-semibold ml-2" style={{ minWidth: 40 }}>
                                             {item.progress}/{item.total}
                                         </span>
-                                    </div>
+                                    </span>
                                 </div>
                                 {/* Subtopics(for aptitude) */}
                                 {expanded === idx &&
                                     item.subtopics &&
                                     item.subtopics.length > 0 && (
-                                        <div className="bg-white">
+                                        <div className="bg-white px-4 pb-2">
+                                            
+                                            <div className="flex items-center justify-center gap-2 mb-2 mt-1 md:hidden">
+                                                <div className="w-1/2 h-2 rounded-full bg-[#f3f3f3] overflow-hidden">
+                                                    <div
+                                                        className="h-2 rounded-full bg-[#ff294f] transition-all"
+                                                        style={{
+                                                            width: `${(item.progress / item.total) * 100}%`,
+                                                        }}
+                                                    />
+                                                </div>
+                                                <span className="text-[#404040] text-base font-semibold ml-2" style={{ minWidth: 40 }}>
+                                                    {item.progress}/{item.total}
+                                                </span>
+                                            </div>
+                                            {/* Subtopics */}
                                             {item.subtopics.map((sub, subIdx) => (
                                                 <div
                                                     key={subIdx}
-                                                    className="flex items-center px-4 py-1.5 border-t border-[#e0e0e0]"
+                                                    className="flex items-center px-2 py-2 border-t border-[#e0e0e0]"
                                                 >
                                                     <input
                                                         type="checkbox"
