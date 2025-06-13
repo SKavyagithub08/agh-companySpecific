@@ -1,0 +1,257 @@
+/* Reset & base */
+body {
+    margin: 0;
+    font-family: "Inter", sans-serif;
+    background-color: #fff;
+    color: #333;
+}
+
+.page-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Headers */
+.desktop-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.back-button {
+    background: none;
+    border: none;
+    font-size: 16px;
+    color: #444;
+    cursor: pointer;
+}
+
+.back-arrow {
+    font-size: 20px;
+    margin-right: 4px;
+}
+
+.user-block {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.avatar-img {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+}
+
+.user-name {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.button-logout {
+    background: #ff2e5f;
+    border: none;
+    color: white;
+    padding: 6px 14px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+/* Main intro */
+.main-intro {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.company-logo {
+    width: 76px;
+    height: 71px;
+    object-fit: contain;
+}
+
+.logo_title_combo{
+  display: flex;
+  justify-content: center;
+}
+
+.company-title {
+    font-size: 32px;
+    font-weight: 600;
+    margin: 8px 0;
+    font-family: "Work Sans",sans-serif;
+}
+
+.company-description {
+    font-size: 24px;
+    font-weight: 400;
+    color: #445;
+    margin-top: 10px;
+    line-height: 1.5;
+    font-family: "Montserrat",sans-serif;
+}
+
+/* Tabs */
+.tab-button-group {
+    display: flex;
+    margin-top: 30px;
+}
+
+.tab-container {
+    border: 1px solid #ff2e5f;
+    border-radius: 25px;
+    overflow: hidden;
+}
+
+.tab-button {
+    padding: 10px 30px;
+    border: none;
+    cursor: pointer;
+    font-weight: 600;
+    border-radius: 25px;
+    font-size: 16px;
+}
+
+.tab-active {
+    background: #ff2e5f;
+    color: white;
+}
+
+.tab-inactive {
+    background: white;
+    color: #ff2e5f;
+}
+
+/* Topics */
+.topic-container {
+    margin-top: 30px;
+    font-family: "Inter",sans-serif;
+}
+
+.topic-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #eee;
+    border-bottom: none;
+    padding: 12px 16px;
+    cursor: pointer;
+    background-color: #fff;
+    transition: background 0.3s ease;
+    font-size: 20px;
+    font-weight: 500;   
+}
+
+.topic-item:last-child {
+    border-bottom: 1px solid #eee;
+    border-radius: 0 0 10px 10px;
+}
+
+.topic-item:first-child {
+    border-radius: 10px 10px 0 0;
+}
+
+.topic-title {
+    font-weight: 600;
+    flex: 1;
+    margin-left: 10px;
+    font-size: 22px;
+}
+
+.topic-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.progress-bar {
+    width: 120px;
+    height: 6px;
+    background: #f0f0f0;
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background: #ff2e5f;
+    transition: width 0.3s ease;
+}
+
+/* Arrow */
+.topic-arrow svg {
+    transition: transform 0.2s ease;
+}
+
+.arrow-icon path {
+    stroke: #757575;
+}
+
+/* Subtopics */
+.subtopics {
+    padding: 10px 20px 15px 45px;
+    background: #fdfdfd;
+    border-left: 2px solid #ff2e5f;
+    border-bottom: 1px solid #eee;
+}
+
+.subtopic-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 10px 0;
+}
+
+.subtopic-title {
+    flex: 1;
+    font-weight: 500;
+}
+
+.subtopic-checkbox {
+    width: 16px;
+    height: 16px;
+}
+
+.subtopic-button {
+    background: #ff2e5f;
+    border: none;
+    color: white;
+    border-radius: 100px;
+    width: 103px;
+    height: 36px;
+    font-size: 17px;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: "Work Sans",sans-serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .desktop-header {
+        display: none;
+    }
+
+    .mobile-header {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px 20px;
+        align-items: center;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .logo-img {
+        width: 32px;
+        height: 32px;
+    }
+}
+
+@media (min-width: 769px) {
+    .mobile-header {
+        display: none;
+    }
+}
